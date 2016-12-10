@@ -458,6 +458,7 @@
     <Content Include="Views\Restaurant\_PagedMenuList.cshtml" />
     <Content Include="Views\Account\errorForgotPassword.cshtml" />
     <Content Include="Views\ShoppingCart\Cart.cshtml" />
+    <Content Include="Views\Shared\_cartnumber.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

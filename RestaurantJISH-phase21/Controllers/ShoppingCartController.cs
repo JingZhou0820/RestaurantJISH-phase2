@@ -24,7 +24,7 @@ namespace RestaurantJISH_phase21.Controllers
 
         }
         int s = 0;
-        public void orderNow(int id)
+        public ActionResult orderNow(int id)
         {
 
             if (Session["Cart"] == null)
@@ -46,11 +46,15 @@ namespace RestaurantJISH_phase21.Controllers
                     cart[index].quantity++;
                 }
             }
-            foreach (Item item in (List<Item>)Session["Cart"])
-            {
-                s = s + item.quantity;
-                Session["quantity"] = s;
-            }
+            
+                foreach (Item item in (List<Item>)Session["Cart"])
+                {
+                    s = s + item.quantity;
+                    Session["quantity"] = s;
+                }
+
+           
+            return PartialView("_cartnumber");
         }
 
     }

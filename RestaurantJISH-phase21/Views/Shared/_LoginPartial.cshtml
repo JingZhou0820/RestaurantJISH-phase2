@@ -107,7 +107,11 @@
                     </li>
                 }
                 <li>
-                    <a class="b-cart" href="@Url.Action("Cart", "ShoppingCart",new {id=-1})"><span><i class="shopping-cart"></i></span><span id="cart-number">@s</span></a>
+                    <a class="b-cart" href="@Url.Action("Cart", "ShoppingCart",new {id=-1})"><span><i class="shopping-cart"></i></span>
+                        <span id="cart-number">
+                            @Html.Partial("_cartnumber")
+                        </span>
+                   </a>
 
                 </li>
             </ul>
@@ -126,8 +130,9 @@
             <li>
                 <a class="b-cart" href="@Url.Action("Cart", "ShoppingCart",new {id=-1})">
                     <span><i class="shopping-cart"></i></span>
-
-                    <span id="cart-number">@Session["quantity"]</span>
+                    <span id="cart-number">
+                        @Html.Partial("_cartnumber")
+                    </span>
                 </a>
 
             </li>

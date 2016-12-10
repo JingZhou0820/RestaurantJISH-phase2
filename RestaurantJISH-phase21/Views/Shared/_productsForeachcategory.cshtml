@@ -66,7 +66,7 @@
                         <p>@item.menu.briefDescription.First().ToString().ToUpper()@item.menu.briefDescription.Substring(1)</p>
 
                     </div>
-                    @Ajax.ActionLink("Buy", "orderNow", "ShoppingCart", new { id = item.menu.foodId }, new AjaxOptions { HttpMethod = "get" }, new { @class = "add-to-cart btn btn-primary", style = "bottom:30px;right:20px;position:absolute" })
+                    @Ajax.ActionLink("Buy", "orderNow", "ShoppingCart", new { id = item.menu.foodId }, new AjaxOptions { HttpMethod = "get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "cart-number" }, new { @class = "add-to-cart btn btn-primary", style = "bottom:30px;right:20px;position:absolute" })
                 </div>
             </div>
         }
