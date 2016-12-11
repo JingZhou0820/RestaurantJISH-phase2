@@ -2,8 +2,8 @@
 @{
     ViewBag.Title = "Cart";
 }
-<div style="margin-top:100px">
-   <table class="table-bordered" width="100%">
+<div class="col-lg-offset-1 col-lg-10" style="margin-top:100px">
+   <table class="table table-condensed">
        <tr>
            <th>Option</th>
            <th>Restaurant</th>        
@@ -26,17 +26,42 @@
             <td>@op</td>
             <td><a href="@Url.Action("menu", "Restaurant", new { id = item.restaurant.RestaurantId })">@item.restaurant.Name</a></td>
             <td>@item.product.foodName</td>
-            <td>@item.product.price</td>
+            <td>$@item.product.price</td>
             <td>@item.quantity</td>
-            <td>@(item.product.price * item.quantity)</td>
+            <td>$@(item.product.price * item.quantity)</td>
+            <td>@Ajax.ActionLink("X", "Delete", "ShoppingCart", new { id = item.product.foodId }, new AjaxOptions { HttpMethod = "post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "cart-number" },new { @style="color:red"})</td>
+           
         </tr>
 
-       }
-       <tr>
-       <td colspan="6" align=right>sum:
-       @s</td>
-       </tr>
+       }  
        }
    </table>
+    <div class="row">
+    <div class="col-lg-offset-11" style="align:right">
+        Sub: $@s
+        </div>    
     </div>
+    <div class="row">
+        <div class="col-lg-offset-11" style="align:right">
+            @{
+
+                ViewBag.total = (s * 1.13);
+            }
+            Total:$@String.Format("{0:0.00}",ViewBag.total)
+        </div>
+    </div>
+    @if (ViewBag.total!=0)
+    {
+        <div class="row">
+            <div class="col-lg-offset-11" style="align:right">
+                @Html.ActionLink("Check out", "checkout", "Individual", null, new { @class = "btn btn-primary" })
+
+            </div>
+        </div>
+    }
+    
+    </div>
+<div class="row">
+    <div class="col-lg-12"></div>
+</div>
 

@@ -56,7 +56,34 @@ namespace RestaurantJISH_phase21.Controllers
            
             return PartialView("_cartnumber");
         }
+        public ActionResult Delete(int id) {
 
+            if (Session["Cart"] != null)
+            {
+                foreach (Item item in (List<Item>)Session["Cart"])
+                {
+                    s = s + item.quantity;
+                }
+                foreach (Item item in (List<Item>)Session["Cart"])
+                {
+                    if (item.product.foodId == id)
+                    {
+                        s = s - item.quantity;
+                    }
+
+                }
+                Session["quantity"] = s;
+                //return PartialView("_cartnumber");
+
+                int index = isExisting(id);
+                List<Item> cart = (List<Item>)Session["cart"];
+                cart.RemoveAt(index);
+                Session["cart"] = cart;
+
+            }
+            return View("cart");
+        }
+        
     }
 
 }
